@@ -59,13 +59,16 @@ if (isset($_POST["login"])) {
                                 <label class="form-label">Username</label>
                                 <input type="text" name="username" class="form-control" placeholder="Masukkan username" required>
                             </div>
+
                             <div class="mb-3">
                                 <label class="form-label">Password</label>
                                 <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
                             </div>
+
                             <div class="d-grid">
                                 <button type="submit" name="login" class="btn btn-primary">LOGIN</button>
                             </div>
+
                         </form>
                     </div>
                 </div>

@@ -26,8 +26,8 @@ session_start();
 
         <div class="card shadow">
             <div class="card-body">
-                <h3>Selamat Datang di Website Uhuy</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed molestie nibh quis est dignissim finibus.
+                <h1 class="text-center mb-4 mt-4">Selamat Datang di Website Uhuy</h1>
+                <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed molestie nibh quis est dignissim finibus.
                     Cras id metus at quam commodo scelerisque in ut urna. Curabitur semper lectus gravida mauris sollicitudin
                     lacinia. Suspendisse potenti. Suspendisse maximus turpis sit amet risus maximus vestibulum. Integer sem
                     massa, dignissim eu erat non, feugiat suscipit neque. Nam ullamcorper, sem ac hendrerit congue, nunc

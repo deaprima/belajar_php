@@ -9,6 +9,7 @@ if (!isset($_SESSION["user_id"])) {
 
 $user_id = $_SESSION["user_id"];
 $message = "";
+$messagePassword = "";
 
 $query = "SELECT * FROM users WHERE id = $user_id";
 $result = $login->query($query);
@@ -45,12 +46,12 @@ if (isset($_POST["update_password"])) {
             $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
             $updatePassword = "UPDATE users SET password = '$hashedPassword' WHERE id = $user_id";
             if ($login->query($updatePassword)) {
-                $message .= "<div class='alert alert-success'>Password berhasil diupdate!</div>";
+                $messagePassword .= "<div class='alert alert-success'>Password berhasil diupdate!</div>";
             } else {
-                $message .= "<div class='alert alert-danger'>Gagal update password.</div>";
+                $messagePassword .= "<div class='alert alert-danger'>Gagal update password.</div>";
             }
         } else {
-            $message .= "<div class='alert alert-danger'>Password dan konfirmasi password tidak cocok!</div>";
+            $messagePassword .= "<div class='alert alert-danger'>Password dan konfirmasi password tidak cocok!</div>";
         }
     }
 }
@@ -66,7 +67,6 @@ if (isset($_POST["delete"])) {
     }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="id">
@@ -88,10 +88,8 @@ if (isset($_POST["delete"])) {
                     <div class="card-body">
                         <h4 class="mb-4">Edit Profile Akun</h4>
 
-                        <!-- Tampilkan message feedback -->
                         <?= $message; ?>
 
-                        <!-- Form Edit Username -->
                         <form method="post" action="" class="mb-4">
                             <div class="mb-3">
                                 <label class="form-label">Username</label>
@@ -100,7 +98,7 @@ if (isset($_POST["delete"])) {
                             <button type="submit" name="update_username" class="btn btn-primary w-100">Update Username</button>
                         </form>
 
-                        <!-- Form Edit Password -->
+                        <?= $messagePassword; ?>
                         <form method="post" action="">
                             <div class="mb-3">
                                 <label class="form-label">Password Baru</label>
@@ -113,7 +111,6 @@ if (isset($_POST["delete"])) {
                             <button type="submit" name="update_password" class="btn btn-primary w-100">Update Password</button>
                         </form>
 
-                        <!-- Hapus akun -->
                         <form method="post" onsubmit="return confirm('Yakin ingin menghapus akun?')">
                             <button type="submit" name="delete" class="btn btn-danger w-100 mt-4">Hapus Akun</button>
                         </form>
