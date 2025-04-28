@@ -15,8 +15,9 @@ if (isset($_POST["upload"])) {
 
     $fileName = pathinfo($file["name"], PATHINFO_FILENAME);
     $fileExtension = pathinfo($file["name"], PATHINFO_EXTENSION);
-    $targetDir = "upload/";
     $extensionFixed = strtolower($fileExtension);
+
+    $targetDir = "upload/";
 
     $allowed = ["jpg", "jpeg", "png", "gif"];
 
