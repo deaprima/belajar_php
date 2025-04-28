@@ -60,7 +60,7 @@ if (isset($_POST['delete'])) {
                             <?php endif; ?>
                         </div>
 
-
+                        <a href="index.php" class="btn btn-secondary w-100 mt-4">Kembali</a>
                     </div>
                 </div>
             </div>

@@ -71,6 +71,7 @@ if (isset($_POST["upload"])) {
 
                             <div class="d-grid mb-3">
                                 <button type="submit" name="upload" class="btn btn-primary">Upload</button>
+                                <a href="index.php" class="btn btn-secondary w-100 mt-4">Kembali</a>
                             </div>
 
                             <?= $uploadMessage; ?>
