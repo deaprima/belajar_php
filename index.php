@@ -39,6 +39,8 @@ session_start();
 
                 <?php if (isset($_SESSION["user_id"])): ?>
                     <a href="editProfile.php" class="btn btn-warning">Edit Profile</a>
+                    <a href="upload.php" class="btn btn-primary ms-2">Upload Gambar</a>
+                    <a href="lihat.php" class="btn btn-primary ms-2">Lihat Gambar</a>
                     <a href="logout.php" class="btn btn-danger ms-2">Logout</a>
                 <?php endif; ?>
             </div>
