@@ -32,18 +32,20 @@ if (isset($_POST['delete'])) {
 
     <div class="container mt-5">
         <div class="row justify-content-center">
-            <div class="col-md-5">
+            <div class="col-md-12">
                 <div class="card shadow-lg">
                     <div class="card-body">
                         <h3 class="text-center mb-4">Lihat Gambar Uhuy</h3>
 
-                        <div class="row">
+                        <div class="row d-flex justify-content-center">
                             <?php if (!empty($files)): ?>
                                 <?php foreach ($files as $file): ?>
+
                                     <div class="col-md-4 mb-3">
-                                        <div class="card">
-                                            <img src="<?= $file ?>" class="card-img-top" alt="Gambar">
+                                        <div class="card" style=" display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
+                                            <img src="<?= $file ?>" class="card-img-top" alt="Gambar" style="width: 100%; height: 200px; object-fit: cover;">
                                             <div class="card-body text-center">
+                                                <p class="mb-2" ><?= basename($file) ?></p>
                                                 <form action="lihat.php" method="POST">
                                                     <input type="hidden" name="file" value="<?= $file ?>">
                                                     <button type="submit" name="delete" class="btn btn-danger btn-sm">Hapus</button>
@@ -51,6 +53,7 @@ if (isset($_POST['delete'])) {
                                             </div>
                                         </div>
                                     </div>
+
                                 <?php endforeach; ?>
                             <?php else: ?>
                                 <p class="text-center">Tidak ada gambar yang diupload.</p>

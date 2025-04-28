@@ -10,24 +10,29 @@ if (!isset($_SESSION['user_id'])) {
 
 $uploadMessage = "";
 
-// if (isset($_POST["lihat"])) {
-//     header("Location: lihat.php");
-//     exit;
-// }
-
 if (isset($_POST["upload"])) {
     $file = $_FILES["gambar"];
 
-    $fileName = basename($file["name"]);
-    $targetDir = "upload/" . $fileName;
-    $targetExtension = pathinfo($targetDir, PATHINFO_EXTENSION);
-    $extensionFixed = strtolower($targetExtension);
+    $fileName = pathinfo($file["name"], PATHINFO_FILENAME);
+    $fileExtension = pathinfo($file["name"], PATHINFO_EXTENSION);
+    $targetDir = "upload/";
+    $extensionFixed = strtolower($fileExtension);
 
     $allowed = ["jpg", "jpeg", "png", "gif"];
 
     if (in_array($extensionFixed, $allowed)) {
-        if (move_uploaded_file($file["tmp_name"], $targetDir)) {
-            $uploadMessage = "<div class='alert alert-success'>Gambar berhasil diupload Cuy!</div>";
+        $newFileName = $fileName;
+        $counter = 1;
+
+        while (file_exists($targetDir . $newFileName . "." . $extensionFixed)) {
+            $newFileName = $fileName . "[$counter]";
+            $counter++;
+        }
+
+        $finalFilePath = $targetDir . $newFileName . "." . $extensionFixed;
+
+        if (move_uploaded_file($file["tmp_name"], $finalFilePath)) {
+            $uploadMessage = "<div class='alert alert-success'>Gambar berhasil diupload: <strong>" . htmlspecialchars($newFileName . "." . $extensionFixed) . "</strong></div>";
         } else {
             $uploadMessage = "<div class='alert alert-danger'>Gagal mengupload gambar Cuy!</div>";
         }
@@ -67,9 +72,6 @@ if (isset($_POST["upload"])) {
                             <div class="d-grid mb-3">
                                 <button type="submit" name="upload" class="btn btn-primary">Upload</button>
                             </div>
-                            <!-- <div class="d-grid mb-3">
-                                <button type="submit" name="lihat" class="btn btn-primary">Lihat Gambar</button>
-                            </div> -->
 
                             <?= $uploadMessage; ?>
 
